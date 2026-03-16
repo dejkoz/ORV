@@ -51,3 +51,17 @@ def zmanjsaj_za_faktor_2(slika: np.ndarray) -> np.ndarray:
         pos_s = 0
 
     return nova_slika
+
+def prestej_piksle_z_barvo(slika: np.ndarray, spodnja_meja: tuple[int, int, int], zgornje_meja: tuple[int, int, int]) -> int:
+    counter = 0
+    spodnja_norm = np.asarray(list(spodnja_meja)) / 255
+    zgornja_norm = np.asarray(list(zgornje_meja)) / 255
+
+    for i in range(0,len(slika)):
+        for j in range(0,len(slika[0])):
+            if(all(slika[i][j] >= spodnja_norm)):
+                if(all(slika[i][j] <= zgornja_norm)):
+                    counter += 1
+
+    return counter
+
