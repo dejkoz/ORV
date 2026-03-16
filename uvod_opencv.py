@@ -29,4 +29,25 @@ def povecaj_za_faktor_2(slika: np.ndarray) -> np.ndarray:
     return nova_slika
 
 def zmanjsaj_za_faktor_2(slika: np.ndarray) -> np.ndarray:
-	pass
+    visina = len(slika)
+    sirina = len(slika[0])
+
+    v_start = 0
+    s_start = 0
+    if(visina % 2 != 0):
+        v_start += 1
+    if(sirina % 2 != 0):
+        s_start += 1
+
+    nova_slika = np.ndarray((int((visina - v_start) / 2),int((sirina - s_start) / 2),3),np.float32)
+
+    pos_v = 0
+    pos_s = 0
+    for i in range(v_start,len(slika),2):
+        for j in range(s_start,len(slika[0]),2):
+            nova_slika[pos_v,pos_s] = np.sum(np.sum(slika[i:i + 2,j:j + 2],1),0) / 4
+            pos_s += 1
+        pos_v += 1
+        pos_s = 0
+
+    return nova_slika
