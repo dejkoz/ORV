@@ -65,3 +65,43 @@ def prestej_piksle_z_barvo(slika: np.ndarray, spodnja_meja: tuple[int, int, int]
 
     return counter
 
+def zrcali_sliko_vertikalno(slika: np.ndarray, ROI: str) -> np.ndarray:
+    visina = len(slika)
+    sirina = len(slika[0])
+
+    pos_v_b = 0
+    pos_v_e = 0
+    pos_s_b = 0
+    pos_s_e = 0
+    match ROI:
+        case "ZL":
+            pos_v_b = 0
+            pos_v_e = int(visina / 2)
+            pos_s_b = 0
+            pos_s_e = int(sirina / 2)
+            flipped = slika[pos_v_b:pos_v_e,pos_s_b:pos_s_e]
+        case "ZD":
+            pos_v_b = 0
+            pos_v_e = int(visina / 2)
+            pos_s_b = -int(sirina / 2)
+            pos_s_e = sirina
+            flipped = slika[pos_v_b:pos_v_e, pos_s_b:pos_s_e]
+	case "SL":
+            pos_v_b = -int(visina / 2)
+            pos_v_e = visina
+            pos_s_b = 0
+            pos_s_e = int(sirina / 2)
+            flipped = slika[pos_v_b:pos_v_e, pos_s_b:pos_s_e]
+        case "SD":
+            pos_v_b = -int(visina / 2)
+            pos_v_e = visina
+            pos_s_b = -int(sirina / 2)
+            pos_s_e = sirina
+            flipped = slika[pos_v_b:pos_v_e, pos_s_b:pos_s_e]
+        case _:
+            return slika
+
+    flipped = flipped[:, ::-1]
+    slika[pos_v_b:pos_v_e,pos_s_b:pos_s_e] = flipped
+
+    return slika
