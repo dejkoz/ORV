@@ -27,3 +27,6 @@ def povecaj_za_faktor_2(slika: np.ndarray) -> np.ndarray:
         pos_v += 2
         pos_s = 0
     return nova_slika
+
+def zmanjsaj_za_faktor_2(slika: np.ndarray) -> np.ndarray:
+	pass
