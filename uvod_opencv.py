@@ -51,3 +51,6 @@ def zmanjsaj_za_faktor_2(slika: np.ndarray) -> np.ndarray:
         pos_s = 0
 
     return nova_slika
+
+def prestej_piksle_z_barvo(slika: np.ndarray, spodnja_meja: tuple[int, int, int], zgornje_meja: tuple[int, int, int]) -> int:
+	pass
