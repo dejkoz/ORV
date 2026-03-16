@@ -65,3 +65,6 @@ def prestej_piksle_z_barvo(slika: np.ndarray, spodnja_meja: tuple[int, int, int]
 
     return counter
 
+def zrcali_sliko_vertikalno(slika: np.ndarray, ROI: str) -> np.ndarray:
+	pass
+
