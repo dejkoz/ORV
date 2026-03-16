@@ -11,3 +11,6 @@ def razrezi_sliko(slika: np.ndarray, sirina_ps: int, visina_ps: int) -> list[np.
         pos_sirina = 0
         pos_visina += visina_ps
     return arr
+
+def povecaj_za_faktor_2(slika: np.ndarray) -> np.ndarray:
+	pass
